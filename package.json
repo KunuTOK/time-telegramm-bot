@@ -18,6 +18,8 @@
   "homepage": "https://github.com/KunuTOK/t#readme",
   "keywords": [],
   "dependencies": {
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
     "node-telegram-bot-api": "^0.30.0"
   }
 }

@@ -1,12 +1,28 @@
 const TelegramBot = require('node-telegram-bot-api');
+const Koa = require('koa');
+const Router = require('koa-router')
 
-// replace the value below with the Telegram token you receive from @BotFather
 const token = '742875963:AAEtJnKfKL8CjS9WRHJZnZHNo3Rhk2_Bo_8';
+const bot = new TelegramBot(token);
+bot.setWebhook('${config.get('url')}/bot');
 
-// Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {polling: true});
+const app = new Koa()
+const router = Router()
+router.post('/bot', ctx => {
+  console.log(ctx)
+  ctx.status = 200
+})
+
+app.use(router.routes())
+
+const port = config.get('port')
+app.listen(port, () => {
+  console.log('listening on ${port}')
+})
 
 bot.onText(/\/time/, (msg, match) => {
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'https://www.timeserver.ru/cities/us/san-francisco');
+  bot.sendMessage(chatId, 'https://www.timeserver.ru/compare/san-francisco/moscow');
+
+url='https://api.telegram.org/bot742875963:AAEtJnKfKL8CjS9WRHJZnZHNo3Rhk2_Bo_8/setWebhook?url=https://lambda-project.netlify.com/.netlify/functions/hello';
 });
