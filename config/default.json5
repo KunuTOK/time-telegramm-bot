@@ -1,2 +1,2 @@
 port: 9000,
-url: 'https://lambda-project.netlify.com/.netlify/functions/hello,'
+url: 'https://lambda-project.netlify.com/.netlify/functions/hello'
